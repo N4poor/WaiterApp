@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL } from '../config';
 
 //selectors
 export const getAllTables = (state) => state.tables;
@@ -28,7 +29,7 @@ const tablesReducer = (statePart = [], action) => {
 
 export const fetchTables = () => {
   return (dispatch) => {
-    axios.get('http://localhost:3131/api/tables')
+    axios.get(`${API_URL}/tables`)
     .then(res => {
       dispatch(loadTables(res.data));
     })
@@ -38,13 +39,13 @@ export const fetchTables = () => {
 // thunk do aktualizacji pojedynczego stolika
 export const saveTableRequest = (table) => (dispatch) => {
   return axios
-    .put(`http://localhost:3131/api/tables/${table.id}`, table)
+    .put(`${API_URL}/tables/${table.id}`, table)
     .then(res => {
       dispatch(updateTable(res.data));
     })
     .catch(err => {
       console.error(err);
-      throw err; // można przekazać dalej do obsługi błędów w komponencie
+      throw err;
     });
 };
 
