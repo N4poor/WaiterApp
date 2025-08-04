@@ -9,7 +9,7 @@
     },
     {
       "id": "2",
-      "status": "Busy",
+      "status": "Cleaning",
       "peopleAmount": 2,
       "maxPeopleAmount": 3,
       "bill": 225
